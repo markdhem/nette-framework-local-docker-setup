@@ -29,7 +29,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: db_local
       MYSQL_USER: local_user
-      MYSQL_PASSWORD: local_password
+      MYSQL_PASSWORD: local_pass
     volumes:
       - dbdata:/var/lib/mysql
       - ./backups:/var/tmp/backups
