@@ -14,7 +14,7 @@
 
 ###
 
-<h1 align="center">Hi there 👋<br>This is the Nette framework setup for your local with docker (Windows, Mac, Linux)</h1>
+<h1 align="center">Hi there 👋<br>This is a docker setup for existing nette framework projects for your local machines (Windows, Mac, Linux)</h1>
 
 ###
 
