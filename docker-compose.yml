@@ -1,0 +1,46 @@
+services:
+  app:
+    build: .
+    container_name: nette-app
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./config:/var/www/html/config
+    environment:
+      - MYSQL_HOST=db
+    networks:
+      - nette-network
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    image: mysql:8.0.45-debian
+    container_name: nette-db
+    platform: linux/amd64
+    expose:
+      - "40000"
+    ports:
+      - "40000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_local
+      MYSQL_USER: local_user
+      MYSQL_PASSWORD: local_password
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./backups:/var/tmp/backups
+    networks:
+      - nette-network
+    
+
+networks:
+  nette-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
